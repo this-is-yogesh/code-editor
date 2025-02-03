@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.10.6",
+    "convex": "^1.18.2",
     "next": "14.2.17",
     "react": "^18",
     "react-dom": "^18"
