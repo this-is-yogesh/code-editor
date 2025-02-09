@@ -1,0 +1,58 @@
+.parentFooter {
+  border-top-width: 1px;
+  border-color: rgb(31 41 55 / 0.5);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: auto;
+}
+
+.insideFirstBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0px 140px;
+  max-width: 1280px;
+  margin: 0px auto;
+  padding: 40px 16px;
+}
+
+.buildfordeveloperbox,
+.sptbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  color: rgb(156 163 175);
+}
+
+.sptbox {
+  gap: 30px;
+}
+
+.supportlink,
+.privacylink,
+.termslink {
+  transition-property: all;
+  transition-timing-function: ease;
+  transition-duration: 150ms;
+}
+
+.supportlink:hover,
+.privacylink:hover,
+.termslink:hover {
+  color: rgb(209, 213, 219);
+}
+
+@media screen and (max-width: 660px) {
+  .insideFirstBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .buildfordeveloperbox {
+    margin-bottom: 25px;
+  }
+}
