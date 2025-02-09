@@ -1,4 +1,3 @@
-import { syncUser } from "./users";
 import { Webhook } from "svix";
 import { httpAction } from "../convex/_generated/server";
 import { WebhookEvent } from "@clerk/nextjs/server";
@@ -7,7 +6,7 @@ import { api } from "./_generated/api";
 export const POSTRequestFromClerk = httpAction(async (ctx, request) => {
   const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
   if (!webhookSecret) {
-    throw new Error("Webhook Secret Missing ");
+    throw new Error("Webhook Secret Missing");
   }
 
   //verifying the svix to see if clerk only sent the webhook
@@ -51,7 +50,7 @@ export const POSTRequestFromClerk = httpAction(async (ctx, request) => {
       await ctx.runMutation(api.users.syncUser, {
         userId: id,
         email: email,
-        name:name
+        name: name,
       });
     } catch (e) {
       console.log(e, "e");
