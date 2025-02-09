@@ -1,6 +1,8 @@
+import { syncUser } from "./users";
 import { Webhook } from "svix";
 import { httpAction } from "../convex/_generated/server";
 import { WebhookEvent } from "@clerk/nextjs/server";
+import { api } from "./_generated/api";
 
 export const POSTRequestFromClerk = httpAction(async (ctx, request) => {
   const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
@@ -41,10 +43,16 @@ export const POSTRequestFromClerk = httpAction(async (ctx, request) => {
   const eventType = event.type;
   if (eventType === "user.created") {
     const { id, email_addresses, first_name, last_name } = event.data;
+    const email = email_addresses[0].email_address;
     const name = `${first_name || ""}  ${last_name || ""}`.trim();
 
     try {
       //save user to db
+      await ctx.runMutation(api.users.syncUser, {
+        userId: id,
+        email: email,
+        name:name
+      });
     } catch (e) {
       console.log(e, "e");
       return new Response("Failed to save user to db", { status: 500 });
@@ -52,4 +60,5 @@ export const POSTRequestFromClerk = httpAction(async (ctx, request) => {
   } else {
     return new Response("Event type not matched", { status: 500 });
   }
+  return new Response("Webhook created successfully", { status: 200 });
 });
