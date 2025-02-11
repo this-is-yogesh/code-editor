@@ -4,7 +4,6 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <>
       <footer className="parentFooter">
         <div className="insideFirstBox">
           <div className="buildfordeveloperbox">
@@ -24,7 +23,7 @@ function Footer() {
           </div>
         </div>
       </footer>
-    </>
+
   );
 }
 
