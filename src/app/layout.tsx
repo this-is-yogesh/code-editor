@@ -32,11 +32,11 @@ export default function RootLayout({
     >
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-gray-100 `}
         >
           <ConvexClientProvider>{children}</ConvexClientProvider>
+          <Footer />
         </body>
-        <Footer />
       </html>
     </ClerkProvider>
   );
